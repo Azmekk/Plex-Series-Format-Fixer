@@ -24,7 +24,7 @@ AnsiConsole.Status()
 
 AnsiConsole.MarkupLine("[green]Located subdirectories.[/]");
 
-using FileStream fs = File.Create(Path.Join(path, $"Rename_Log_{DateTime.UtcNow.ToString("yyyy-MM-ddTHH-mm-ssZ")}.txt"));
+using FileStream fs = File.Create(Path.Join(path, $"Rename_Log_{DateTime.UtcNow:yyyy-MM-ddTHH-mm-ssZ}.txt"));
 using StreamWriter logWriter = new(fs);
 logWriter.WriteLine("The following files were renamed: ");
 
