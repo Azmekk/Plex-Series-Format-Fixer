@@ -23,7 +23,7 @@ Plex Series Format Fixer is an application designed to traverse a specified fold
 | `S(\d{2})\sE(\d{2})`             | Matches "S01 E02"                               | `S01 E02`            | `S01E02`    |
 
 ## Asking me to include patterns
-If you think there is a common pattern that I haven't included, please submit an [issue](https://github.com/Azmekk/Plex-Series-Format-Fixer/issues) and I'll do my best to add it. 
+If you think there is a common pattern that I haven't included, please submit an [issue](https://github.com/Azmekk/Plex-Series-Format-Fixer/issues/new/choose) and I'll do my best to add it. 
 
 ## Adding patterns Yourself
 Simply open the `patterns.json` file and add the Regex pattern you want to include. Something like ChatGPT can be useful in generating those. 
