@@ -26,8 +26,10 @@ namespace PlexSeriesNameFormatFixer.Helpers
 
         private static string CreateLogFile()
         {
-            var logPath = Path.Join(PathHelper.ExecutablePath, LogName);
+            var logsDirectory = Path.Join(PathHelper.ExecutablePath, "Logs");
+            Directory.CreateDirectory(logsDirectory);
 
+            var logPath = Path.Join(logsDirectory, LogName);
             if(!File.Exists(logPath))
             {
                 File.Create(logPath).Close();
