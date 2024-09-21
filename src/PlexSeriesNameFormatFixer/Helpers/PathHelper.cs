@@ -1,6 +1,6 @@
 ﻿namespace PlexSeriesNameFormatFixer.Helpers
 {
-    internal class PathHelper
+    public class PathHelper
     {
         public List<string> GetAllSubdirectories(string targetDirectory)
         {

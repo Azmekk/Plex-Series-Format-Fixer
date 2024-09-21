@@ -6,12 +6,12 @@ using System.Text.Json.Nodes;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 using PlexSeriesNameFormatFixer.DataObjects;
+using System.IO;
 
 namespace PlexSeriesNameFormatFixer.Helpers
 {
-    internal class EpisodeHelper
+    public class EpisodeHelper
     {
         private string[] Patterns { get; set; }
         public EpisodeHelper()
@@ -21,7 +21,7 @@ namespace PlexSeriesNameFormatFixer.Helpers
 
             string jsonContent = File.ReadAllText(jsonFilePath);
 
-            PatternData? patternData = JsonConvert.DeserializeObject<PatternData>(jsonContent);
+            PatternData? patternData = JsonSerializer.Deserialize<PatternData>(jsonContent);
             Patterns = patternData?.Patterns ?? [];
         }
 
@@ -31,20 +31,21 @@ namespace PlexSeriesNameFormatFixer.Helpers
             int season = 0;
             int episode = 0;
 
-            foreach (string pattern in Patterns)
+            foreach(string pattern in Patterns)
             {
-                if (!Regex.IsMatch(episodeName, pattern))
+                if(!Regex.IsMatch(episodeName, pattern))
                 {
                     continue;
                 }
 
                 output = Regex.Replace(episodeName, pattern, match =>
                 {
-                    season = int.Parse(match.Groups[1].Value);
-                    episode = int.Parse(match.Groups[2].Value);
+                    season = int.Parse(match.Groups["season"].Value);
+                    episode = int.Parse(match.Groups["episode"].Value);
 
                     return $"S{season:D2}E{episode:D2}";
                 });
+                break;
             }
 
             return new EpisodeInfo(output, season, episode);

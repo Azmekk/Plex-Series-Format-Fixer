@@ -1,11 +1,17 @@
 {
 	"patterns": [
-		"S(\\d{2})-(\\d{2})",
-		"S(\\d{2})[._]E(\\d{2})",
-		"Season (\\d) Episode (\\d)",
-		"S(\\d)E(\\d)",
-		"S(\\d)\\s-\\sE(\\d{2})",
-		"S(\\d)\\s-\\s(\\d{2})",
-		"S(\\d{2})\\sE(\\d{2})"
+		"S(?<season>\\d+)-(?<episode>\\d+)",
+		"S(?<season>\\d+)[._]E(?<episode>\\d+)",
+		"Season (?<season>\\d+) Episode (?<episode>\\d+)",
+		"S(?<season>\\d+)E(?<episode>\\d+)",
+		"S(?<season>\\d+)\\s-\\sE(?<episode>\\d+)",
+		"S(?<season>\\d+)\\s-\\s(?<episode>\\d+)",
+		"S(?<season>\\d+)\\sE(?<episode>\\d+)",
+		"E(?<episode>\\d+)[._]S(?<season>\\d+)",
+		"Episode (?<episode>\\d+) Season (?<season>\\d+)",
+		"E(?<episode>\\d+)S(?<season>\\d+)",
+		"E(?<episode>\\d+)\\s-\\sS(?<season>\\d+)",
+		"(?<episode>\\d+)\\s-\\sS(?<season>\\d+)",
+		"E(?<episode>\\d+)\\sS(?<season>\\d+)"
 	]
 }

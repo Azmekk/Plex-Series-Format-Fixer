@@ -14,13 +14,19 @@ Plex Series Format Fixer is an application designed to traverse a specified fold
 
 | Pattern                          | Description                                      | Example Input        | Output      |
 |----------------------------------|--------------------------------------------------|----------------------|-------------|
-| `S(\d{2})-(\d{2})`               | Matches "S01-02"                                | `S01-02`             | `S01E02`    |
-| `S(\d{2})[._]E(\d{2})`           | Matches "S01.E02" or "S01_E02"                  | `S01.E02`            | `S01E02`    |
-| `Season (\d) Episode (\d)`       | Matches "Season 1 Episode 2"                     | `Season 1 Episode 2` | `S01E02`    |
-| `S(\d)E(\d)`                     | Matches "S1E2"                                  | `S1E2`               | `S01E02`    |
-| `S(\d)\s-\sE(\d{2})`             | Matches "S1 - E02"                              | `S1 - E02`           | `S01E02`    |
-| `S(\d)\s-\s(\d{2})`              | Matches "S1 - 02"                               | `S1 - 02`            | `S01E02`    |
-| `S(\d{2})\sE(\d{2})`             | Matches "S01 E02"                               | `S01 E02`            | `S01E02`    |
+| `S(?<season>\d+)-(?<episode>\d+)`               | Matches "S01-02"                                | `S01-02`             | `S01E02`    |
+| `S(?<season>\d+)[._]E(?<episode>\d+)`           | Matches "S01.E02" or "S01_E02"                  | `S01.E02`            | `S01E02`    |
+| `Season (?<season>\d+) Episode (?<episode>\d+)`  | Matches "Season 1 Episode 2"                     | `Season 1 Episode 2` | `S01E02`    |
+| `S(?<season>\d+)E(?<episode>\d+)`                | Matches "S1E2"                                  | `S1E2`               | `S01E02`    |
+| `S(?<season>\d+)\s-\sE(?<episode>\d+)`          | Matches "S1 - E02"                              | `S1 - E02`           | `S01E02`    |
+| `S(?<season>\d+)\s-\s(?<episode>\d+)`            | Matches "S1 - 02"                               | `S1 - 02`            | `S01E02`    |
+| `S(?<season>\d+)\sE(?<episode>\d+)`               | Matches "S01 E02"                               | `S01 E02`            | `S01E02`    |
+| `E(?<episode>\d+)[._]S(?<season>\d+)`             | Matches "E02.S01" or "E02_S01"                  | `E02.S01`            | `S01E02`    |
+| `Episode (?<episode>\d+) Season (?<season>\d+)`  | Matches "Episode 2 Season 1"                     | `Episode 2 Season 1` | `S01E02`    |
+| `E(?<episode>\d+)S(?<season>\d+)`                 | Matches "E2S1"                                  | `E2S1`               | `S01E02`    |
+| `E(?<episode>\d+)\s-\sS(?<season>\d+)`           | Matches "E2 - S1"                               | `E2 - S1`            | `S01E02`    |
+| `(?<episode>\d+)\s-\sS(?<season>\d+)`            | Matches "2 - S1"                                | `2 - S1`             | `S01E02`    |
+| `E(?<episode>\d+)\sS(?<season>\d+)`               | Matches "E2 S1"                                 | `E2 S1`              | `S01E02`    |
 
 ## Asking me to include patterns
 If you think there is a common pattern that I haven't included, please submit an [issue](https://github.com/Azmekk/Plex-Series-Format-Fixer/issues/new/choose) and I'll do my best to add it. 
