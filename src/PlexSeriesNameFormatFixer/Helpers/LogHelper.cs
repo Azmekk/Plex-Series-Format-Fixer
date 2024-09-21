@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Spectre.Console;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -63,8 +64,10 @@ namespace PlexSeriesNameFormatFixer.Helpers
                 AppendToFile("No changes.");
             }
 
-            LogFileFilestream.Dispose();
             LogFileStreamWriter.Dispose();
+            LogFileFilestream.Dispose();
+
+            AnsiConsole.MarkupLine($"[darkorange]Output log file: {LogFilePath}[/]");
 
             GC.SuppressFinalize(this);
         }

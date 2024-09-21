@@ -11,7 +11,7 @@ if(string.IsNullOrEmpty(path))
 
 path = Path.GetFullPath(path);
 
-LogHelper logHelper = new();
+using LogHelper logHelper = new();
 PathHelper pathHelper = new();
 List<string> directories = [path];
 
