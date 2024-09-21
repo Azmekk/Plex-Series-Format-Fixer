@@ -15,6 +15,6 @@ namespace PlexSeriesNameFormatFixer.DataObjects
         }
 
         [JsonPropertyName("patterns")]
-        public string[] Patterns { get; set; }
+        public string[]? Patterns { get; set; }
     }
 }

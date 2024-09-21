@@ -44,7 +44,7 @@ AnsiConsole.Status()
                 string oldName = Path.GetFileName(filePath);
                 EpisodeInfo epInfo = episodeHelper.GetNormalizedEpisode(oldName);
 
-                if(!string.IsNullOrEmpty(epInfo.Name))
+                if(!string.IsNullOrEmpty(epInfo.Name) && !epInfo.Name.Equals(oldName))
                 {
                     File.Move(filePath, Path.Join(dir, epInfo.Name));
                     logWriter.WriteLine($"{oldName} -> {epInfo.Name}");
