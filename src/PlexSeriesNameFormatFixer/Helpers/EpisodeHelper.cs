@@ -16,8 +16,7 @@ namespace PlexSeriesNameFormatFixer.Helpers
         private string[] Patterns { get; set; }
         public EpisodeHelper()
         {
-            string exePath = AppDomain.CurrentDomain.BaseDirectory;
-            string jsonFilePath = Path.Combine(exePath, "patterns.json");
+            string jsonFilePath = Path.Combine(PathHelper.ExecutablePath, "patterns.json");
 
             string jsonContent = File.ReadAllText(jsonFilePath);
 

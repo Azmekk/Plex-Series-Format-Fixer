@@ -11,8 +11,8 @@ if(string.IsNullOrEmpty(path))
 
 path = Path.GetFullPath(path);
 
+LogHelper logHelper = new();
 PathHelper pathHelper = new();
-
 List<string> directories = [path];
 
 AnsiConsole.Status()
@@ -23,10 +23,6 @@ AnsiConsole.Status()
     });
 
 AnsiConsole.MarkupLine("[green]Located subdirectories.[/]");
-
-using FileStream fs = File.Create(Path.Join(path, $"Rename_Log_{DateTime.UtcNow:yyyy-MM-ddTHH-mm-ssZ}.txt"));
-using StreamWriter logWriter = new(fs);
-logWriter.WriteLine("The following files were renamed: ");
 
 List<string> files = [];
 EpisodeHelper episodeHelper = new();
@@ -47,7 +43,7 @@ AnsiConsole.Status()
                 if(!string.IsNullOrEmpty(epInfo.Name) && !epInfo.Name.Equals(oldName))
                 {
                     File.Move(filePath, Path.Join(dir, epInfo.Name));
-                    logWriter.WriteLine($"{oldName} -> {epInfo.Name}");
+                    logHelper.LogVideoNameChange(oldName, epInfo.Name);
                 }
             }
         }

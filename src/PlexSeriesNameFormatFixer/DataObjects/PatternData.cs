@@ -9,11 +9,6 @@ namespace PlexSeriesNameFormatFixer.DataObjects
 {
     public class PatternData
     {
-        public PatternData()
-        {
-            //Empty 
-        }
-
         [JsonPropertyName("patterns")]
         public string[]? Patterns { get; set; }
     }

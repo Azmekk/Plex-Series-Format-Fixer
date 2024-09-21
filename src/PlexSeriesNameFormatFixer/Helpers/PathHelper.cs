@@ -2,6 +2,8 @@
 {
     public class PathHelper
     {
+        public static string ExecutablePath { get; private set; } = AppDomain.CurrentDomain.BaseDirectory;
+
         public List<string> GetAllSubdirectories(string targetDirectory)
         {
             List<string> dirs = [];
