@@ -37,6 +37,6 @@ Simply open the `patterns.json` file and add the Regex pattern you want to inclu
 #### Example
 1. You have a file named `Series Name Season 1 Episode 1.mkv`
 2. You need to replace `Season 1 Episode 1` with `S01E01` (The app already includes this but this is simply an example)
-3. Find out the regex for the pattern (In this case it's `S(\d{2})[._]E(\d{2})`)
+3. Find out the regex for the pattern In this case it's `Season (?<season>\d+) Episode (?<episode>\d+)`
 4. Append that regex to the property called `patterns` in `patterns.json`
 5. Run the app.
